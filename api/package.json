@@ -1,0 +1,23 @@
+{
+  "name": "excuse-manager-api",
+  "version": "0.0.1",
+  "description": "Api serving the excuses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rahulswarnkar/excuse-manager/api"
+  },
+  "author": "Rahul Swarnkar",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "aws-sdk": "^2.512.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  }
+}
