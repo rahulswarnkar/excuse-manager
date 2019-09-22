@@ -1,3 +1,5 @@
+from json import dumps
+
 def handler(event, context):
     print("Event:", event)
     print("Function name:", context.function_name)
@@ -8,4 +10,7 @@ def handler(event, context):
     print("Log group name:",  context.log_group_name)
     print("Request ID:",context.aws_request_id)
     print("Mem. limits(MB):", context.memory_limit_in_mb)
-    return "hello world!"
+    return {
+        "statusCode": 200,
+        "body": dumps("Hello World!")
+    }
