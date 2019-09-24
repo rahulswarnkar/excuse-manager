@@ -17,4 +17,8 @@ jobs:
       with:
         python-version: 3.7
     - name: Install dependencies
-      run: pip --version
+      run: |
+        pip --version
+        pwd
+        env
+        ls
