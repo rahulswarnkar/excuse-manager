@@ -1,8 +1,9 @@
-name: Greet Everyone
-on: [push]
-  # push:
-  #   paths:
-  #     - 'src/*'
+name: Build
+on:
+  push:
+    paths:
+      - 'src/*'
+      - '.github/workflows/package-src.yml'
 
 jobs:
   build:
@@ -18,7 +19,7 @@ jobs:
         python-version: 3.7
     - name: Install dependencies
       run: |
-        pip --version
-        pwd
-        env
-        ls
+        python -m pip install --upgrade pip
+        python -m venv venv
+        source ./venv/bin/activate
+        pip install -r src/requirements.txt
