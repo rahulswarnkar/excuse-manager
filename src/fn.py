@@ -1,4 +1,8 @@
-from json import dumps
+from dynamodb_json import json_util as dynamodb_json
+import json
+import boto3
+
+client = boto3.client('dynamodb', region_name='eu-west-1')
 
 def handler(event, context):
     print("Event:", event)
@@ -10,7 +14,16 @@ def handler(event, context):
     print("Log group name:",  context.log_group_name)
     print("Request ID:",context.aws_request_id)
     print("Mem. limits(MB):", context.memory_limit_in_mb)
+
+    key = {
+        'type': 'excuse',
+        'id': '20190922T220000-VFXOYYQA'
+    }
+    print('Key', json.loads(dynamodb_json.dumps(key)))
+    response = client.get_item(TableName='excuse-manager-dev-em', Key=json.loads(dynamodb_json.dumps(key)))
+    excuse = response['Item']
+    print('Response', response, '\n')
     return {
         "statusCode": 200,
-        "body": dumps("Hello World!")
+        "body": json.dumps(dynamodb_json.loads(excuse))
     }

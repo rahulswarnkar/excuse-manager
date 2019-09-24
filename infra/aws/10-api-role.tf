@@ -17,3 +17,13 @@ resource "aws_iam_role" "iam_role_api" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy_attachment" "lambda_logs" {
+  role        = "${aws_iam_role.iam_role_api.name}"
+  policy_arn  = "${aws_iam_policy.lambda_logging.arn}"
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_table" {
+  role        = "${aws_iam_role.iam_role_api.name}"
+  policy_arn  = "${aws_iam_policy.table_crud.arn}"
+}
