@@ -13,11 +13,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Package python source
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v1
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using semvers version range syntax.
           architecture: 'x64' # (x64 or x86)
-      - run: python --version
+      - name: Package python source
       - run: pip --version
