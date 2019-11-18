@@ -32,7 +32,6 @@ def add_excuse():
         return 'message not found', 400
     excuse = {
         'id': len(excuse_list) + 1,
-        'author': request.remote_addr,
         'message': body['message']
     }
     app.logger.info("adding an excuse")
