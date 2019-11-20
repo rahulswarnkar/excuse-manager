@@ -58,6 +58,7 @@ class TestStringMethods(TestCase):
     @patch('service.delete_by_id')
     def test_delete_200(self, mock):
         with main.app.test_client() as c:
+            mock.return_value = True
             response = c.delete("/excuses/1")
             self.assertEqual(response.status_code, 200, 'status code do not match')
 
